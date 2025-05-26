@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Naam Invoer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      transition: background 1s ease;
+    }
 
+    .rainbow {
+      background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 400% 400%;
+      animation: rainbowAnimation 10s ease infinite;
+    }
+
+    .orange {
+      background-color: orange;
+    }
+
+    @keyframes rainbowAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    #greeting {
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Voer je naam in</h1>
+  <input type="text" id="nameInput" placeholder="Jouw naam...">
+  <button onclick="checkName()">Verstuur</button>
+  <div id="greeting"></div>
+
+  <script>
+    function checkName() {
+      const name = document.getElementById("nameInput").value.trim().toLowerCase();
+      const greetingDiv = document.getElementById("greeting");
+      const body = document.body;
+
+      greetingDiv.textContent = `Hoi ${name.charAt(0).toUpperCase() + name.slice(1)}`;
+
+      // Verwijder eerst alle stijlen
+      body.classList.remove("rainbow", "orange");
+
+      if (name === "elin") {
+        body.classList.add("rainbow");
+      } else if (name === "tobias") {
+        body.classList.add("orange");
+      }
+    }
+  </script>
+</body>
+</html>
